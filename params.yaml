@@ -1,0 +1,4 @@
+pdf_path: r"C:\Users\shaik\Desktop\RAG\12-Rabiul-Awal-2024.pdf"
+query: "عید میلادالنبی ﷺ (۱۲ ربیع الاول ۲۰۲۴) کے موقع پر آزاد جموں و کشمیر میں کون کون سی سرکاری تقریبات اور انتظامات کیے جائیں گے؟"
+chunk_size: 800
+chunk_overlap: 200

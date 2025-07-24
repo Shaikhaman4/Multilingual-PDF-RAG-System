@@ -1,0 +1,32 @@
+stages:
+  extract:
+    cmd: python prepare_pdf.py "${pdf_path}" extracted.txt
+    deps:
+      - prepare_pdf.py
+      - ${pdf_path}
+    outs:
+      - extracted.txt
+
+  chunk:
+    cmd: python chunk_text.py extracted.txt chunks.json --chunk_size ${chunk_size} --chunk_overlap ${chunk_overlap}
+    deps:
+      - chunk_text.py
+      - extracted.txt
+    outs:
+      - chunks.json
+
+  embed:
+    cmd: python embed_db.py chunks.json chroma_db
+    deps:
+      - embed_db.py
+      - chunks.json
+    outs:
+      - chroma_db
+
+  query:
+    cmd: python query.py chroma_db "${query}"
+    deps:
+      - query.py
+      - chroma_db
+    params:
+      - query
